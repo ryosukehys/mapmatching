@@ -15,7 +15,7 @@ mesh_end = 6542402199
 min_m = 20
 mesh = pd.read_csv("C:\\Users\hysir\Desktop\研究室\kyosaku_work\mesh_all.csv")
 mesh_list = list(mesh["meshcode"])
-for mesh in mesh_list[5:101]:
+for mesh in [66412522]:
     try:
         mesh = str(mesh)[0:8]
 
@@ -72,11 +72,11 @@ for mesh in mesh_list[5:101]:
                                 distance.append([x, prelat, prelon])
                     #mean = statistics.mean(distance[:][0])
                     #print(mean)
-                    os.makedirs("C:/Users/hysir/Desktop/研究室/matching/distance_data_all/" + str(
+                    os.makedirs("C:/Users/hysir/Desktop/研究室/matching/distance_data/" + str(
                         mesh_srt) + "_" + bus_type + "_" + which_going, exist_ok=True)
 
                     df = pd.DataFrame(distance, columns=["distance", "latitude", "longitude"])
-                    df.to_csv("C:/Users/hysir/Desktop/研究室/matching/distance_data_all/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+"/distance"+day+"_"+str(mesh_srt)+"_"+bus_type+"_"+which_going+".csv")
+                    df.to_csv("C:/Users/hysir/Desktop/研究室/matching/distance_data/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+"/distance"+day+"_"+str(mesh_srt)+"_"+bus_type+"_"+which_going+".csv")
                     print("finish")
                 except Exception as e:
                     print(e)

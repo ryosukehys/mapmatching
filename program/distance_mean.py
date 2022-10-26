@@ -22,7 +22,7 @@ mesh_end = 6542402199
 min_m = 20
 mesh = pd.read_csv("C:\\Users\hysir\Desktop\研究室\kyosaku_work\mesh_all.csv")
 mesh_list = list(mesh["meshcode"])
-for mesh in mesh_list[5:101]:
+for mesh in ["66412522"]:
     try:
         mesh = str(mesh)[0:8]
 
@@ -35,7 +35,7 @@ for mesh in mesh_list[5:101]:
             month = days[1][0:6]
             for day in days:
                 try:
-                    df = pd.read_csv("C:/Users/hysir/Desktop/研究室/matching/distance_data_all/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+"/distance"+day+"_"+str(mesh_srt)+"_"+bus_type+"_"+which_going+".csv")
+                    df = pd.read_csv("C:/Users/hysir/Desktop/研究室/matching/distance_data/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+"/distance"+day+"_"+str(mesh_srt)+"_"+bus_type+"_"+which_going+".csv")
                     distance = df["distance"]
                     #mean = statistics.mean(distance)
                     #stdev = statistics.pstdev(distance)
@@ -49,11 +49,11 @@ for mesh in mesh_list[5:101]:
                     print(e)
             save = pd.DataFrame(statistics_list, columns=["day", "mean", "stdev", "num of data"])
             save.to_csv(
-                "C:/Users/hysir/Desktop/研究室/matching/distance_data_all/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+ "/statistics_" + month + "_" + str(
+                "C:/Users/hysir/Desktop/研究室/matching/distance_data/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+ "/statistics_" + month + "_" + str(
                     mesh_srt) + "_"+bus_type+".csv")
         save_month = pd.DataFrame(statistics_list_mon, columns=["day", "mean", "stdev", "num of data"])
         save_month.to_csv(
-                "C:/Users/hysir/Desktop/研究室/matching/distance_data_all/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+ "/statistics_" + str(
+                "C:/Users/hysir/Desktop/研究室/matching/distance_data/"+str(mesh_srt)+"_"+bus_type+"_"+which_going+ "/statistics_" + str(
                     mesh_srt) + "_"+bus_type+".csv")
         print("finish", str(mesh_srt))
     except Exception as e: print(e, "final")
